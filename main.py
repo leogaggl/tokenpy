@@ -3,7 +3,6 @@ from bluepy.btle import Scanner
 from storage import RemoteDataStore
 from scan import DeviceForwardingDelegate
 from tokencube import TokenCubeHandler
-from ConfigParser import SafeConfigParser
 
 __author__ = "Leo Gaggl"
 __copyright__ = "Copyright 2016, Leo Gaggl"
@@ -14,6 +13,7 @@ __maintainer__ = "Leo Gaggl"
 __email__ = "leo@gaggl.com"
 __status__ = "Prototype"
 
+#TODO: Move to config file 
 device_settings = {
     "f1:11:11:11:10:11": {
         "device": "TokenCube 1",
@@ -28,8 +28,6 @@ device_settings = {
 }
 
 if __name__ == "__main__":
-    config = SafeConfigParser()
-    config.read("tokenpy.cfg")
     
     print "Creating Scanner"
     delegate = DeviceForwardingDelegate()
