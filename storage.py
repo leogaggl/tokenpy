@@ -46,7 +46,7 @@ class RemoteDataStore(object):
     def add_telemetry_data(self, measurement, fields, source_info):
         payload = json.dumps({'data': fields, 'location': '-34.92295629, 138.59124184'})
         headers = {'Content-type': 'application/json', 'Accept': 'application/json', 'Authorization': 'Buddy ' + self.access_token}
-        resp = requests.put(self.app_url + '/telemetry' + self.app_name, json=payload, headers=headers, timeout=5)
+        resp = requests.request('post', self.service_root + '/telemetry/' + self.app_name, data=payload, headers=headers, timeout=5)
         
         if (resp.ok):
             result = json.loads(resp.content)
